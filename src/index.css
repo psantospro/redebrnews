@@ -434,6 +434,11 @@ img { max-width: 100%; display: block; }
 .sidebar-item__title a:hover { color: var(--color-brand-700); }
 .sidebar-item__date { font-size: 11px; color: var(--color-ink-400); margin-top: 2px; }
 
+/* Primeiro item em destaque (ex.: teaser de Podcast) — thumb maior, empilhado */
+.sidebar-item--featured { grid-template-columns: 1fr; gap: var(--space-2); }
+.sidebar-item--featured .sidebar-item__media { height: 140px; }
+.sidebar-item--featured .sidebar-item__title { font-size: 14px; margin-top: var(--space-1); }
+
 /* ============================================================
    ColumnistCard
    ============================================================ */

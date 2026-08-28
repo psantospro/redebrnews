@@ -101,8 +101,8 @@ export function HomePage() {
 
         <aside className="sidebar">
           <section>
-            <SectionHeader label="Recentes" />
-            <SidebarList articles={mostRecent(4)} />
+            <SectionHeader label="Podcast" href="/podcast" />
+            <SidebarList articles={podcasts.slice(0, 4)} featured />
           </section>
           <AdSlot size="1x1" imageUrl="ad-1x1.jpg" />
           <section>
