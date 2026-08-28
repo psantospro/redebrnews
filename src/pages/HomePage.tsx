@@ -104,7 +104,7 @@ export function HomePage() {
             <SectionHeader label="Recentes" />
             <SidebarList articles={mostRecent(4)} />
           </section>
-          <AdSlot size="300x250" />
+          <AdSlot size="1x1" imageUrl="ad-1x1.jpg" />
           <section>
             <SectionHeader label="Vídeos mais vistos" />
             <SidebarList articles={maisVistos} />

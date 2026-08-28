@@ -38,7 +38,7 @@ export function CategoryPage() {
           )}
         </section>
         <aside className="sidebar">
-          <AdSlot size="300x250" />
+          <AdSlot size="1x1" imageUrl="ad-1x1.jpg" />
           <section>
             <SectionHeader label="Mais vistos" />
             <SidebarList articles={mostViewed(5)} />
