@@ -11,7 +11,7 @@ import { NotFoundPage } from './NotFoundPage';
 export function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
 
-  if (!slug || !(slug in EDITORIAS)) return <NotFoundPage />;
+  if (!slug || !Object.hasOwn(EDITORIAS, slug)) return <NotFoundPage />;
 
   const editoria = slug as EditoriaSlug;
   const artigos = byEditoria(editoria);

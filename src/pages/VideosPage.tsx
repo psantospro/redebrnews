@@ -45,7 +45,7 @@ export function VideosPage() {
       <div className="page-grid">
         <section>
           {videos.length > 0 ? (
-            <div className="media-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+            <div className="media-grid media-grid--3">
               {videos.map((v) => (
                 <MediaCard key={v.slug} article={v} />
               ))}

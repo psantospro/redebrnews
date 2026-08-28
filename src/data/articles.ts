@@ -306,6 +306,17 @@ export function byAuthor(author: string): Article[] {
   return ARTICLES.filter((a) => a.author.toLowerCase() === author.toLowerCase());
 }
 
+/** Busca por termo no título/resumo, sobre a base inteira e só então limitada. */
+export function search(query: string, limit = 50): Article[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  return ARTICLES.filter(
+    (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q),
+  )
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, limit);
+}
+
 export function mostRecent(limit = 8): Article[] {
   return [...ARTICLES].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, limit);
 }
