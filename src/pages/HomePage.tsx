@@ -36,7 +36,7 @@ export function HomePage() {
 
   return (
     <div className="container">
-      <AdSlot size="970x90" />
+      <AdSlot size="970x90" imageUrl="JORNALISMO.png" />
 
       {/* Destaque principal */}
       <section className="page-section">
