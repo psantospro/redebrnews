@@ -41,23 +41,29 @@ interface FeaturedArticleCardProps {
   ctaLabel?: string; // default "Leia mais"
 }
 
-export function FeaturedArticleCard({ article, tag = 'Destaque', ctaLabel = 'Leia mais' }: FeaturedArticleCardProps) {
+export function FeaturedArticleCard({ article, tag = 'Destaque', ctaLabel = 'Leia a matéria completa' }: FeaturedArticleCardProps) {
   return (
-    <div className="featured-card">
-      <div>
+    <div className="hero-card">
+      {article.imageUrl && (
+        <img className="hero-card__image" src={article.imageUrl} alt="" />
+      )}
+      <div className="hero-card__overlay" />
+      <div className="hero-card__content">
         <span className="featured-card__tag">{tag}</span>
-        <h2 className="featured-card__title">
+        <h2 className="hero-card__title">
           <Link to={`/${article.slug}`}>{article.title}</Link>
         </h2>
-        <p className="featured-card__excerpt">{article.excerpt}</p>
-        <ArticleMeta article={article} />
+        <p className="hero-card__excerpt">{article.excerpt}</p>
+        <div className="hero-card__meta">
+          Por {article.author} · {formatDate(article.publishedAt)}
+          {article.updatedAt && article.updatedAt !== article.publishedAt && (
+            <> · atualizado em {formatDate(article.updatedAt)}</>
+          )}
+        </div>
         <Link to={`/${article.slug}`} className="featured-card__cta">
           {ctaLabel}
         </Link>
       </div>
-      <Link to={`/${article.slug}`} aria-hidden>
-        <Thumb article={article} className="featured-card__media" />
-      </Link>
     </div>
   );
 }
