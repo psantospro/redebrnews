@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { SectionHeader } from '../components/SectionHeader';
 import { MediaCard } from '../components/cards';
 import { byKind } from '../data/articles';
@@ -8,7 +9,7 @@ export function PodcastPage() {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / Podcast
+        <Link to="/">Home</Link> / Podcast
       </div>
       <h1 className="page-title">Podcast</h1>
 

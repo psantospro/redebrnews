@@ -3,8 +3,8 @@ import { AdSlot } from '../components/AdSlot';
 import { SectionHeader } from '../components/SectionHeader';
 import { SidebarList } from '../components/SidebarList';
 import { ArticleMeta } from '../components/cards';
-import { byTag, getArticle, mostRecent, mostViewed } from '../data/articles';
-import { EDITORIAS, ESTADOS, formatDate } from '../data/site';
+import { byAuthor, byTag, getArticle, mostRecent, mostViewed, search } from '../data/articles';
+import { COLUNISTAS, EDITORIAS, ESTADOS, formatDate } from '../data/site';
 import { NotFoundPage } from './NotFoundPage';
 
 export function ArticlePage() {
@@ -114,34 +114,37 @@ export function TagPage() {
 
 export function AuthorPage() {
   const { slug } = useParams<{ slug: string }>();
-  const nome = slug === 'redeadm' ? 'RedeADM' : slug ?? '';
-  const artigos = mostRecent(20).filter((a) => a.author.toLowerCase() === nome.toLowerCase());
+  const colunista = COLUNISTAS.find((c) => c.slug === slug);
+
+  if (!colunista) return <NotFoundPage />;
+
+  const artigos = byAuthor(colunista.name);
 
   return (
     <div className="container">
       <div className="breadcrumb">
-        <Link to="/">Home</Link> / Autor / {nome}
+        <Link to="/">Home</Link> / Autor / {colunista.name}
       </div>
-      <h1 className="page-title">Arquivo do autor: {nome}</h1>
-      <div className="article-list" style={{ maxWidth: 820 }}>
-        {artigos.map((a) => (
-          <div key={a.slug} className="ranked-card__title" style={{ fontSize: 16 }}>
-            <Link to={`/${a.slug}`}>{a.title}</Link>
-            <div className="ranked-card__date">{formatDate(a.publishedAt)}</div>
-          </div>
-        ))}
-      </div>
+      <h1 className="page-title">Arquivo do autor: {colunista.name}</h1>
+      {artigos.length > 0 ? (
+        <div className="article-list" style={{ maxWidth: 820 }}>
+          {artigos.map((a) => (
+            <div key={a.slug} className="ranked-card__title" style={{ fontSize: 16 }}>
+              <Link to={`/${a.slug}`}>{a.title}</Link>
+              <div className="ranked-card__date">{formatDate(a.publishedAt)}</div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">Nenhuma matéria publicada por este autor ainda.</div>
+      )}
     </div>
   );
 }
 
 export function SearchPage() {
   const q = new URLSearchParams(window.location.search).get('q')?.toLowerCase() ?? '';
-  const resultados = q
-    ? mostRecent(50).filter(
-        (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q),
-      )
-    : [];
+  const resultados = search(q);
 
   return (
     <div className="container">

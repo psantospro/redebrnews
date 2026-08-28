@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CONTATO } from '../data/site';
 
 const PAGES: Record<string, { title: string; body: string[] }> = {
@@ -47,7 +48,7 @@ export function InstitutionalPage({ page }: { page: keyof typeof PAGES }) {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / {content.title}
+        <Link to="/">Home</Link> / {content.title}
       </div>
       <h1 className="page-title">{content.title}</h1>
       <div className="page-prose">

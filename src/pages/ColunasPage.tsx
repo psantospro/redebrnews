@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { SectionHeader } from '../components/SectionHeader';
 import { ColumnistCard } from '../components/ColumnistCard';
 import { ArticleCard } from '../components/cards';
@@ -10,7 +10,7 @@ export function ColunasPage() {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / Colunas
+        <Link to="/">Home</Link> / Colunas
       </div>
       <h1 className="page-title">Colunas</h1>
       <section className="page-section" style={{ maxWidth: 640 }}>
@@ -36,7 +36,7 @@ export function ColunistaPage() {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / <a href="/colunas">Colunas</a> / {colunista.name}
+        <Link to="/">Home</Link> / <Link to="/colunas">Colunas</Link> / {colunista.name}
       </div>
       <h1 className="page-title">{colunista.name}</h1>
       <section className="page-section" style={{ maxWidth: 640 }}>

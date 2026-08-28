@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { AdSlot } from '../components/AdSlot';
 import { SectionHeader } from '../components/SectionHeader';
 import { SidebarList } from '../components/SidebarList';
@@ -10,7 +11,7 @@ export function BlogPage() {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / Blog
+        <Link to="/">Home</Link> / Blog
       </div>
       <h1 className="page-title">Blog</h1>
 

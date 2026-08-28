@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AdSlot } from '../components/AdSlot';
 import { SectionHeader } from '../components/SectionHeader';
 import { SidebarList } from '../components/SidebarList';
@@ -21,31 +21,31 @@ export function VideosPage() {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / <a href="/videos">Vídeos</a>
+        <Link to="/">Home</Link> / <Link to="/videos">Vídeos</Link>
         {estado && <> / {ESTADOS[estado as EstadoSlug]}</>}
       </div>
       <h1 className="page-title">{titulo}</h1>
 
       <div className="filter-chips">
-        <a className={`filter-chip${!estado ? ' filter-chip--active' : ''}`} href="/videos">
+        <Link className={`filter-chip${!estado ? ' filter-chip--active' : ''}`} to="/videos">
           Todos
-        </a>
+        </Link>
         {ESTADO_SLUGS.map((uf) => (
-          <a
+          <Link
             key={uf}
             className={`filter-chip${estado === uf ? ' filter-chip--active' : ''}`}
-            href={`/videos/${uf}`}
+            to={`/videos/${uf}`}
             style={{ textDecoration: 'none' }}
           >
             {ESTADOS[uf]}
-          </a>
+          </Link>
         ))}
       </div>
 
       <div className="page-grid">
         <section>
           {videos.length > 0 ? (
-            <div className="media-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+            <div className="media-grid media-grid--3">
               {videos.map((v) => (
                 <MediaCard key={v.slug} article={v} />
               ))}
