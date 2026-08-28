@@ -86,7 +86,7 @@ export function HomePage() {
         )}
       </section>
 
-      <AdSlot size="970x250" label="970 × 250 · full banner" />
+      <AdSlot size="970x250" imageUrl="zoho_banner_5.jpg" label="970 × 250 · full banner" />
 
       {/* Mais recentes + sidebar */}
       <div className="page-grid">
