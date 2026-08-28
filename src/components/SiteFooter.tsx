@@ -28,7 +28,7 @@ export function SiteFooter({ copyrightYear }: SiteFooterProps) {
         <div className="site-footer__top">
           <div>
             <Link to="/" className="site-footer__logo">
-              <img src="/logo-white.png" alt="RBN — RedeBRNews" />
+              <img src={`${import.meta.env.BASE_URL}logo-white.png`} alt="RBN — RedeBRNews" />
             </Link>
             <p className="site-footer__about">
               Portal de notícias em vídeo com cobertura política e regional. Informação que transforma.

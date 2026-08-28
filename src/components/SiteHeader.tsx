@@ -19,7 +19,7 @@ export function SiteHeader({ weather }: SiteHeaderProps) {
     <header className="site-header">
       <div className="container">
         <Link to="/" className="site-header__logo" aria-label="RedeBRNews — página inicial">
-          <img src="/logo.png" alt="RBN — RedeBRNews" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="RBN — RedeBRNews" />
         </Link>
 
         {weather && (
