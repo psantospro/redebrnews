@@ -4,8 +4,8 @@ import { SectionHeader } from '../components/SectionHeader';
 import { ColumnistCard } from '../components/ColumnistCard';
 import { SidebarList } from '../components/SidebarList';
 import { ArticleCard, FeaturedArticleCard, MediaCard, RankedStoryCard } from '../components/cards';
-import { ARTICLES, byKind, mostRecent, mostViewed } from '../data/articles';
-import { COLUNISTAS, EDITORIAS, ESTADOS } from '../data/site';
+import { ARTICLES, byEditoria, byKind, mostRecent, mostViewed } from '../data/articles';
+import { COLUNISTAS_DESTAQUE, EDITORIAS, ESTADOS } from '../data/site';
 import type { EstadoSlug } from '../types';
 
 const ESTADOS_FILTRO: EstadoSlug[] = [
@@ -23,6 +23,7 @@ export function HomePage() {
 
   const videos = byKind('video');
   const podcasts = byKind('podcast');
+  const justica = byEditoria('justica');
   const [estadoFiltro, setEstadoFiltro] = useState<EstadoSlug | 'todos'>('todos');
 
   const videosFiltrados = useMemo(
@@ -38,10 +39,27 @@ export function HomePage() {
     <div className="container">
       <AdSlot size="970x90" imageUrl="JORNALISMO.png" />
 
-      {/* Destaque principal */}
-      <section className="page-section">
-        {main && <FeaturedArticleCard article={main} tag={EDITORIAS[main.editoria]} />}
-      </section>
+      {/* Destaque principal + Podcast/Colunistas em destaque */}
+      <div className="page-grid page-section">
+        <section>
+          {main && <FeaturedArticleCard article={main} tag={EDITORIAS[main.editoria]} />}
+        </section>
+
+        <aside className="sidebar">
+          <section>
+            <SectionHeader label="Podcast" href="/podcast" />
+            <SidebarList articles={podcasts.slice(0, 1)} featured />
+          </section>
+          <section>
+            <SectionHeader label="Colunistas" href="/colunas" />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+              {COLUNISTAS_DESTAQUE.map((c) => (
+                <ColumnistCard key={c.slug} columnist={c} />
+              ))}
+            </div>
+          </section>
+        </aside>
+      </div>
 
       {/* Destaques ranqueados */}
       {secondary.length > 0 && (
@@ -101,31 +119,25 @@ export function HomePage() {
 
         <aside className="sidebar">
           <section>
-            <SectionHeader label="Podcast" href="/podcast" />
-            <SidebarList articles={podcasts.slice(0, 4)} featured />
-          </section>
-          <AdSlot size="1x1" imageUrl="ad-1x1.jpg" />
-          <section>
             <SectionHeader label="Vídeos mais vistos" />
             <SidebarList articles={maisVistos} />
           </section>
-          <section>
-            <SectionHeader label="Colunistas" href="/colunas" />
-            {COLUNISTAS.slice(0, 1).map((c) => (
-              <ColumnistCard key={c.slug} columnist={c} />
-            ))}
-          </section>
+          <AdSlot size="1x1" imageUrl="ad-1x1.jpg" />
         </aside>
       </div>
 
-      {/* Podcast */}
+      {/* Justiça */}
       <section className="page-section" style={{ marginTop: 'var(--space-7)' }}>
-        <SectionHeader label="Podcast" href="/podcast" />
-        <div className="media-grid">
-          {podcasts.map((p) => (
-            <MediaCard key={p.slug} article={p} />
-          ))}
-        </div>
+        <SectionHeader label="Justiça" href="/editoria/justica" />
+        {justica.length > 0 ? (
+          <div className="media-grid">
+            {justica.slice(0, 4).map((a) => (
+              <MediaCard key={a.slug} article={a} />
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">Nenhuma matéria de Justiça publicada ainda.</div>
+        )}
       </section>
     </div>
   );
