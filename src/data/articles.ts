@@ -16,6 +16,7 @@ export const ARTICLES: Article[] = [
     author: 'RedeADM',
     publishedAt: '2026-08-23',
     updatedAt: '2026-08-24',
+    imageUrl: 'imagem do senado.webp',
     duration: '04:12',
     views: 18400,
     featured: true,

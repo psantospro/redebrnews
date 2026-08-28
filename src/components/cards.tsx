@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import { EDITORIAS, formatDate } from '../data/site';
 import type { Article } from '../types';
 
+/** Resolve imagem de /public respeitando o base path (GitHub Pages usa /redebrnews/). */
+export function assetUrl(path: string): string {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+}
+
 export function Thumb({
   article,
   className = '',
@@ -13,7 +18,7 @@ export function Thumb({
 }) {
   return (
     <div className={`thumb${dark || article.kind !== 'blog' ? ' thumb--dark' : ''} ${className}`}>
-      {article.imageUrl && <img src={article.imageUrl} alt="" loading="lazy" />}
+      {article.imageUrl && <img src={assetUrl(article.imageUrl)} alt="" loading="lazy" />}
       {article.kind !== 'blog' && <span className="thumb__play">▶</span>}
       {article.duration && <span className="thumb__duration">{article.duration}</span>}
     </div>
@@ -45,7 +50,7 @@ export function FeaturedArticleCard({ article, tag = 'Destaque', ctaLabel = 'Lei
   return (
     <div className="hero-card">
       {article.imageUrl && (
-        <img className="hero-card__image" src={article.imageUrl} alt="" />
+        <img className="hero-card__image" src={assetUrl(article.imageUrl)} alt="" />
       )}
       <div className="hero-card__overlay" />
       <div className="hero-card__content">
