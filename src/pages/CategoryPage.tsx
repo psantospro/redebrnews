@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AdSlot } from '../components/AdSlot';
 import { SectionHeader } from '../components/SectionHeader';
 import { SidebarList } from '../components/SidebarList';
@@ -19,7 +19,7 @@ export function CategoryPage() {
   return (
     <div className="container">
       <div className="breadcrumb">
-        <a href="/">Home</a> / Editorias / {EDITORIAS[editoria]}
+        <Link to="/">Home</Link> / Editorias / {EDITORIAS[editoria]}
       </div>
       <h1 className="page-title">{EDITORIAS[editoria]}</h1>
 
