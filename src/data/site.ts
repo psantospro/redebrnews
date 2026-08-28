@@ -76,12 +76,27 @@ export const COLUNISTAS: Columnist[] = [
     bio: 'Análises sobre os movimentos da política nacional e os bastidores do poder.',
   },
   {
+    slug: 'claudia-nunes',
+    name: 'Cláudia Nunes',
+    topic: 'Economia',
+    bio: 'Os principais indicadores econômicos e os impactos para empresas e consumidores.',
+  },
+  {
+    slug: 'rafael-lucena',
+    name: 'Rafael Lucena',
+    topic: 'Opinião',
+    bio: 'Artigos e reflexões sobre temas que impactam a sociedade e o cidadão.',
+  },
+  {
     slug: 'redeadm',
     name: 'RedeADM',
     topic: 'Redação',
     bio: 'Equipe de redação da RedeBRNews, com cobertura em vídeo das principais pautas do país.',
   },
 ];
+
+/** Colunistas exibidos nas vitrines da home (exclui o arquivo interno "RedeADM"). */
+export const COLUNISTAS_DESTAQUE: Columnist[] = COLUNISTAS.filter((c) => c.slug !== 'redeadm');
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'facebook', href: 'https://facebook.com/redebrnews' },

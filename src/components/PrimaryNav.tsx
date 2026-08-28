@@ -12,7 +12,31 @@ export function PrimaryNav({ items }: PrimaryNavProps) {
   return (
     <nav className="primary-nav" aria-label="Navegação principal">
       <div className="container">
-        <Link to="/" className="primary-nav__home" aria-label="Home">⌂</Link>
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            `primary-nav__home${isActive ? ' primary-nav__home--active' : ''}`
+          }
+          aria-label="Home"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path
+              d="M4 11.5 12 4l8 7.5"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 10v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1v-9"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </NavLink>
         <ul className={`primary-nav__list${open ? ' primary-nav__list--open' : ''}`}>
           {items.map((item) => (
             <li key={item.label} className="primary-nav__item">
