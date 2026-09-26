@@ -74,18 +74,21 @@ export const COLUNISTAS: Columnist[] = [
     name: 'Wellington Farias',
     topic: 'Política',
     bio: 'Análises sobre os movimentos da política nacional e os bastidores do poder.',
+    avatarUrl: 'images/colunistas/wellington-farias.jpg',
   },
   {
     slug: 'claudia-nunes',
     name: 'Cláudia Nunes',
     topic: 'Economia',
     bio: 'Os principais indicadores econômicos e os impactos para empresas e consumidores.',
+    avatarUrl: 'images/colunistas/claudia-nunes.jpg',
   },
   {
     slug: 'rafael-lucena',
     name: 'Rafael Lucena',
     topic: 'Opinião',
     bio: 'Artigos e reflexões sobre temas que impactam a sociedade e o cidadão.',
+    avatarUrl: 'images/colunistas/rafael-lucena.jpg',
   },
   {
     slug: 'redeadm',

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Columnist } from '../types';
+import { assetUrl } from './cards';
 
 interface ColumnistCardProps {
   columnist: Columnist;
@@ -15,7 +16,7 @@ export function ColumnistCard({ columnist }: ColumnistCardProps) {
   return (
     <div className="columnist-card">
       <div className="columnist-card__avatar">
-        {columnist.avatarUrl ? <img src={columnist.avatarUrl} alt={columnist.name} /> : initials}
+        {columnist.avatarUrl ? <img src={assetUrl(columnist.avatarUrl)} alt={columnist.name} /> : initials}
       </div>
       <div>
         <div className="columnist-card__name">
