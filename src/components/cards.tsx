@@ -74,7 +74,7 @@ export function FeaturedArticleCard({ article, tag = 'Destaque', ctaLabel = 'Lei
 }
 
 interface RankedStoryCardProps {
-  rank: number;
+  rank?: number;
   article: Article;
 }
 
@@ -82,7 +82,7 @@ export function RankedStoryCard({ rank, article }: RankedStoryCardProps) {
   return (
     <div className="ranked-card">
       <div className="ranked-card__media">
-        <span className="ranked-card__rank">{rank}</span>
+        {rank !== undefined && <span className="ranked-card__rank">{rank}</span>}
         <Thumb article={article} className="ranked-card__thumb" />
       </div>
       <div className="ranked-card__cat">{editoriaLabel(article)}</div>
