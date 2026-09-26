@@ -21,6 +21,11 @@ export function HomePage() {
   const featured = ARTICLES.filter((a) => a.featured);
   const [main, ...secondary] = featured;
 
+  const featuredSlugs = new Set(featured.map((a) => a.slug));
+  const tambemEmDestaque = mostRecent(20)
+    .filter((a) => !featuredSlugs.has(a.slug))
+    .slice(0, 3);
+
   const videos = byKind('video');
   const podcasts = byKind('podcast');
   const justica = byEditoria('justica');
@@ -43,6 +48,12 @@ export function HomePage() {
       <div className="page-grid page-section">
         <section>
           {main && <FeaturedArticleCard article={main} tag={EDITORIAS[main.editoria]} />}
+          {tambemEmDestaque.length > 0 && (
+            <div style={{ marginTop: 'var(--space-6)' }}>
+              <SectionHeader label="Também em destaque" />
+              <SidebarList articles={tambemEmDestaque} />
+            </div>
+          )}
         </section>
 
         <aside className="sidebar">
