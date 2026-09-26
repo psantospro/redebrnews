@@ -51,7 +51,11 @@ export function HomePage() {
           {tambemEmDestaque.length > 0 && (
             <div style={{ marginTop: 'var(--space-6)' }}>
               <SectionHeader label="Também em destaque" />
-              <SidebarList articles={tambemEmDestaque} />
+              <div className="ranked-grid">
+                {tambemEmDestaque.map((a) => (
+                  <RankedStoryCard key={a.slug} article={a} />
+                ))}
+              </div>
             </div>
           )}
         </section>
