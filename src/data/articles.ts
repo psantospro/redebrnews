@@ -191,6 +191,18 @@ export const ARTICLES: Article[] = [
     tags: ['sus', 'saude-publica'],
   },
   {
+    slug: 'cnj-lanca-painel-de-acompanhamento-de-processos-digitais',
+    title: 'CNJ lança painel de acompanhamento de processos digitais',
+    excerpt: 'O Conselho Nacional de Justiça apresentou uma ferramenta que permite acompanhar em tempo real o andamento de processos eletrônicos em todos os tribunais do país.',
+    editoria: 'justica',
+    kind: 'blog',
+    author: 'RedeADM',
+    publishedAt: '2026-08-15',
+    imageUrl: 'images/editorias/justica.jpg',
+    views: 4600,
+    tags: ['cnj', 'justica-digital'],
+  },
+  {
     slug: 'stf-forma-maioria-para-manter-regras-sobre-redes-sociais',
     title: 'STF forma maioria para manter regras sobre redes sociais',
     excerpt: 'O Supremo Tribunal Federal formou maioria para manter as regras de moderação e responsabilidade das plataformas digitais no país.',
