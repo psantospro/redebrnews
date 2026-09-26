@@ -83,6 +83,7 @@ export const ARTICLES: Article[] = [
     imageUrl: 'images/editorias/politica.jpg',
     duration: '04:35',
     views: 11300,
+    featured: true,
     tags: ['eleicoes-2026', 'senado'],
   },
   {
